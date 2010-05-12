@@ -12,34 +12,34 @@ Game.prototype = {
   appendEvents: function() {
     var self = this;
     
-  	this.socket.onopen = function(event) {
-  	};
+    this.socket.onopen = function(event) {
+    };
 
-  	this.socket.onmessage = function(event) {
-  		var data = eval('(' + event.data + ')');
-  		
-  		if (data.yourid) {
-  		  self.id = data.yourid;
-  		} else if(data.removePlayer) {
-  		  var element = self.getPlayer(data.removePlayer);
-  		  document.body.removeChild(element);
-  		} else {
-  		  if (data.id != self.id || self.waiting_position) {
-      		var element = self.getPlayer(data.id);
+    this.socket.onmessage = function(event) {
+      var data = eval('(' + event.data + ')');
+      
+      if (data.yourid) {
+        self.id = data.yourid;
+      } else if(data.removePlayer) {
+        var element = self.getPlayer(data.removePlayer);
+        document.body.removeChild(element);
+      } else {
+        if (data.id != self.id || self.waiting_position) {
+          var element = self.getPlayer(data.id);
           element.style.left = data.x + 'px';
           element.style.top = data.y + 'px';
           
-    		  if (data.id == self.id) {
-    		    self.x = data.x;
-    		    self.y = data.y;
-    		    self.waiting_position = false;
-  		    }
-  		  }
-  		}
-  	};
+          if (data.id == self.id) {
+            self.x = data.x;
+            self.y = data.y;
+            self.waiting_position = false;
+          }
+        }
+      }
+    };
 
-  	this.socket.onclose = function(event) {
-  	};
+    this.socket.onclose = function(event) {
+    };
   },
   
   appendGuiEvents: function() {
