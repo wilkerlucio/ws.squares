@@ -1,0 +1,37 @@
+h1. WebSockets Squares
+
+h2. About
+
+Its a tiny app to make an experiment with WebSockets. It uses Node as application manager, and Sinatra as front server.
+
+h2. Requirements
+
+In order to run this app you need to have installed:
+
+* Ruby
+* Sinatra
+* Node
+* CoffeeScript
+
+h2. Install
+
+Just clone the repository.
+
+bc. git clone git://github.com:wilkerlucio/ws.squares.git
+
+h2. Run
+
+You need to run the two servers:
+
+bc. ruby game.rb
+coffee ws-server.coffee
+
+Them open some browser windows (prefer Chrome 4+ which supports websockets natively) and access:
+
+bc. http://localhost:4567
+
+Use the keyboard arrows to move your square, when you move, your square position will be automatically updated on other screens at real time :)
+
+h2. Misc
+
+For purists, I exported a js version of ws-server. You can run this without coffee.
